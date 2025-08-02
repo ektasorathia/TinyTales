@@ -67,7 +67,7 @@ def create_story():
                         timeout=60.0
                     )
                     
-                    
+                    print(f"LLM API response status: {response}")
 
                     if response.status_code == 200:
                         llm_response = response.json()
@@ -82,7 +82,8 @@ def create_story():
                             except json.JSONDecodeError:
                                 print(f"Failed to parse LLM result as JSON: {result_str}")
                                 story = {}
-                    
+
+                            print(f"Story generated: {story}")
                             # Create scenes from LLM response
                             scenes = []
                             for i, scene in enumerate(story.get('scenes', []), 1):

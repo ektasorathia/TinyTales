@@ -222,6 +222,7 @@ class GenerateStoryTool(ToolInterface):
                     
                     # Generate images for each scene
                     scenes = story_data.get('scenes', [])
+                    logger.info(f"Generating images for {scenes} scenes")
                     for scene in scenes: 
                         scene_text = scene.get('story_text', '')
                         if scene_text:
@@ -229,7 +230,7 @@ class GenerateStoryTool(ToolInterface):
                             logger.info(f"Generating image for scene {scene.get('scene_number', 'unknown')}")
                             image_data = await image_generator.generate_image(
                                 prompt=scene_text,
-                                style=story_data.get('theme', 'digital art')
+                                style=story_data.get('animated','theme', 'digital art')
                             )
                             if image_data:
                                 scene['image'] = image_data
@@ -249,7 +250,7 @@ class GenerateStoryTool(ToolInterface):
                                 )
 
                     logger.info("All scene images generated successfully")
-                    
+                    logger.info(f"Story data: {story_data}")
                     # Return the enhanced story with images
                     return OutputSchema(result=json.dumps(story_data))
                     

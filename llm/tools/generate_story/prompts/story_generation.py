@@ -12,7 +12,7 @@ Requirements:
 - Each scene should be engaging and visually descriptive
 - The story should have a clear beginning, middle, and end
 - Make it appropriate for {age_group}
-- Include elements that would make great images
+- Include elements that would make great animated images
 
 Please structure your response as a JSON object with the following format:
 {{
@@ -28,28 +28,31 @@ Please structure your response as a JSON object with the following format:
 }}
 
 The imagePrompt should be descriptive and include visual elements like:
-- Setting and environment
-- Characters and their appearance
-- Actions and emotions
-- Colors and lighting
-- Style suggestions (e.g., "colorful", "whimsical", "dramatic")
+- Setting and environment with vibrant colors
+- Characters with expressive faces and animated poses
+- Actions and emotions that convey movement
+- Bright, cheerful lighting and atmosphere
+- Animated/cartoon style with rounded shapes and bold colors
+- Whimsical and playful elements suitable for children
 
-Make sure the story flows naturally from scene to scene and creates an engaging narrative.
+Make sure the story flows naturally from scene to scene and creates an engaging narrative that will look great as animated illustrations.
 """
 
 IMAGE_GENERATION_PROMPT = """
-Create a detailed image prompt for the following scene:
+Create a detailed animated image prompt for the following scene:
 
 Scene Description: {scene_description}
 
 Requirements:
-- Include visual style (e.g., "watercolor", "digital art", "photorealistic")
-- Specify mood and atmosphere
-- Include color palette suggestions
-- Mention any specific artistic influences
-- Make it suitable for {age_group}
+- Use animated/cartoon style with vibrant colors
+- Include expressive characters with big eyes and friendly faces
+- Add whimsical and playful elements
+- Use bright, cheerful lighting
+- Include rounded shapes and bold outlines
+- Make it suitable for {age_group} with a storybook feel
+- Add magical or fantastical elements when appropriate
 
-The image prompt should be detailed enough for an AI image generator to create a compelling visual.
+The image prompt should be detailed enough for an AI image generator to create a compelling animated visual that looks like it belongs in a children's storybook.
 """
 
 STORY_VALIDATION_PROMPT = """
@@ -63,7 +66,8 @@ Requirements to check:
 3. Story flows logically from beginning to end
 4. Appropriate for {age_group}
 5. Fits the {genre} genre
-6. Image prompts are detailed and visual
+6. Image prompts are detailed and include animated/cartoon style elements
+7. Visual descriptions are vibrant and engaging
 
 If there are any issues, please provide specific feedback for improvement.
 """
