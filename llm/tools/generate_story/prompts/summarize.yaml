@@ -13,6 +13,10 @@ system: |
       {
         "scene_number": 1,
         "story_text": "Detailed scene description for image generation"
+      },
+      {
+        "scene_number": 2,
+        "story_text": "Detailed scene description for image generation"
       }
     ]
   }
@@ -32,6 +36,10 @@ system: |
     "scenes": [
       {
         "scene_number": 1,
+        "story_text": "A small brown mouse with bright eyes standing in front of a miniature wooden door, about 6 inches tall, nestled among colorful wildflowers. The door has intricate carvings and a tiny golden doorknob. Soft morning sunlight filters through green leaves above."
+      },
+       {
+        "scene_number": 2,
         "story_text": "A small brown mouse with bright eyes standing in front of a miniature wooden door, about 6 inches tall, nestled among colorful wildflowers. The door has intricate carvings and a tiny golden doorknob. Soft morning sunlight filters through green leaves above."
       }
     ]
@@ -58,7 +66,11 @@ examples:
           {
             "scene_number": 1,
             "story_text": "A small brown mouse with bright eyes standing in front of a miniature wooden door, about 6 inches tall, nestled among colorful wildflowers. The door has intricate carvings and a tiny golden doorknob. Soft morning sunlight filters through green leaves above."
-          }
+          },
+          {
+            "scene_number": 2,
+            "story_text": "A small brown mouse with bright eyes standing in front of a miniature wooden door, about 6 inches tall, nestled among colorful wildflowers. The door has intricate carvings and a tiny golden doorknob. Soft morning sunlight filters through green leaves above."
+          } 
         ]
       }
 
