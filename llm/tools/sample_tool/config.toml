@@ -1,0 +1,18 @@
+# Tool-specific configuration
+
+[tool]
+name = "Text Processor"
+description = "Processes text using LLM capabilities"
+version = "1.0.0"
+author = "Framework Developer"
+uses_llm = true
+
+[settings]
+default_prompt_type = "summarize"
+default_max_length = 100
+timeout = 60
+
+[llm]
+# Override global LLM settings if needed
+temperature = 0.5
+max_tokens = 500

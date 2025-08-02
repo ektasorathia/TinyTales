@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm"
+# name = "fastapi-tools-framework"
+version = "0.1.0"
+description = "picture story generation"
+# description = "A framework for building and exposing tools as FastAPI endpoints"
+
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "EKta", email = "your.email@example.com"}
+]
+# authors = [
+#     {name = "test", email = "test@gmail.com"}
+# ]
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.23.2",
+    "pydantic>=2.7.4,<3.0.0",
+    "tomli>=2.0.1",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.1",
+    "httpx>=0.25.0",
+    "python-multipart>=0.0.6",
+    "loguru>=0.7.0",
+    "langchain-community>=0.2.17",
+]
+
+[project.optional-dependencies]
+llm = [
+    "langchain==0.2.17",
+    "pychomsky==0.2.20",
+]
+auth = [
+    "pycloudclient==0.1.1",
+]
+dev = [
+    "pytest>=7.4.2",
+    "pytest-asyncio>=0.21.1",
+    "black>=23.9.1",
+    "isort>=5.12.0",
+    "mypy>=1.5.1",
+    "flake8>=6.1.0",
+    "black"
+]
+
+ollama = [
+    "langchain_community",
+]
+all = [
+    "langchain==0.2.17",
+    "pychomsky==0.2.20",
+    "pycloudclient==0.1.1",
+]
+
+[tool.setuptools]
+packages = ["app", "tools", "scripts"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false

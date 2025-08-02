@@ -1,0 +1,20 @@
+name: "Single Image Generator"
+description: "Generate a detailed image description for a given prompt"
+
+system: |
+  You are an image description generator. Return JSON: {{"image_description": "description", "style": "style", "mood": "mood"}}
+
+human: |
+  Describe: {prompt}
+
+examples:
+  - input: "A cat"
+    output: |
+      {{
+        "image_description": "A fluffy orange cat sitting in sunlight",
+        "style": "realistic",
+        "mood": "peaceful"
+      }}
+
+temperature: 0.3
+max_tokens: 200 

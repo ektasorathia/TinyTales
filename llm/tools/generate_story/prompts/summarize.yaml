@@ -1,0 +1,66 @@
+name: "Picture Story Generator"
+description: "Generate a complete picture story with 5 scenes and corresponding image descriptions"
+
+system: |
+  You are a creative storyteller. Create a picture story with exactly 5 scenes for children aged 5-10.
+
+  Return ONLY valid JSON in this exact format:
+  {
+    "title": "Story Title",
+    "theme": "adventure",
+    "target_age": "5-10 years",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "story_text": "Detailed scene description for image generation"
+      }
+    ]
+  }
+
+  Requirements:
+  - Each scene: 2-3 sentences with visual details
+  - Story should have: introduction, problem, action, climax, resolution
+  - Use bright colors and engaging visuals in descriptions
+  - Make it age-appropriate and positive
+  - Return ONLY the JSON, no other text
+
+  Example:
+  {
+    "title": "Milo's Garden Adventure",
+    "theme": "discovery",
+    "target_age": "5-10 years",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "story_text": "A small brown mouse with bright eyes standing in front of a miniature wooden door, about 6 inches tall, nestled among colorful wildflowers. The door has intricate carvings and a tiny golden doorknob. Soft morning sunlight filters through green leaves above."
+      }
+    ]
+  }
+
+human: |
+  Create a picture story based on: {prompt}
+
+  User: {username}
+  Age: {age_group}
+  Genre: {genre}
+  Scenes: {scene_count}
+
+  Return ONLY valid JSON with exactly {scene_count} scenes.
+
+examples:
+  - input: "A little mouse discovers a magical garden"
+    output: |
+      {
+        "title": "Milo's Garden Adventure",
+        "theme": "discovery",
+        "target_age": "5-10 years",
+        "scenes": [
+          {
+            "scene_number": 1,
+            "story_text": "A small brown mouse with bright eyes standing in front of a miniature wooden door, about 6 inches tall, nestled among colorful wildflowers. The door has intricate carvings and a tiny golden doorknob. Soft morning sunlight filters through green leaves above."
+          }
+        ]
+      }
+
+temperature: 0.7
+max_tokens: 1500 

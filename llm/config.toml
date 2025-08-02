@@ -1,0 +1,43 @@
+# config.toml - Main application configuration
+
+[app]
+name = "FastAPI Tools Framework"
+description = "A framework for building and exposing tools as FastAPI endpoints"
+version = "0.1.0"
+
+[server]
+host = "0.0.0.0"
+port = 8000
+reload = false
+
+[cors]
+origins = ["*"]
+allow_credentials = true
+allow_methods = ["*"]
+allow_headers = ["*"]
+
+[auth]
+enabled = false
+provider = "sso"
+endpoint = "https://siteiam.vip.ebay.com/.well-known/openid-configuration"
+timeout = 30
+
+[llm]
+enabled = true
+use_ollama = true
+model_name = "azure-chat-completions-gpt-4o-mini-2024-07-18"
+max_tokens = 1000
+temperature = 0.7
+endpoint = "https://chomskygw.vip.qa.ebay.com/api/v1/genai"
+enable_prompt_logging = true
+ollama_model="llama3.2:3b"
+ollama_base_url="http://localhost:11434"
+
+[logging]
+level = "info"
+format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+[tools]
+# Default configuration for all tools
+[tools.defaults]
+timeout = 30
