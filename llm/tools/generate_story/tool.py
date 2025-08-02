@@ -208,8 +208,7 @@ class GenerateStoryTool(ToolInterface):
             try:
                 result = await llm_client.invoke(formatted_prompt)
                 logger.info(f"LLM response received, length: {len(result)}")
-                # logger.info(f"LLM response content: {result[:500]}...")  # Log first 500 chars
-                
+            
                 # Check if result is empty or None
                 if not result or result.strip() == "":
                     logger.warning("LLM returned empty response, using fallback")
@@ -217,6 +216,7 @@ class GenerateStoryTool(ToolInterface):
                 
                 # Parse the LLM response to get story structure
                 try:
+                    logger.info("Parsing LLM response as JSON")
                     story_data = json.loads(result)
                     logger.info("Successfully parsed LLM response")
                     
@@ -249,7 +249,6 @@ class GenerateStoryTool(ToolInterface):
                                 )
 
                     logger.info("All scene images generated successfully")
-                    logger.info(f"Result story {json.dumps(story_data)} ")
                     
                     # Return the enhanced story with images
                     return OutputSchema(result=json.dumps(story_data))
@@ -265,8 +264,18 @@ class GenerateStoryTool(ToolInterface):
                         json_match = re.search(r'\{.*\}', result, re.DOTALL)
                         if json_match:
                             json_str = json_match.group(0)
+                            
+                            # Fix common LLM JSON issues
+                            # 1. Add missing commas between array elements (scenes)
+                            json_str = re.sub(r'}\s*{\s*"scene_number"', '},{"scene_number"', json_str)
+                            # 2. Fix missing commas in object arrays
+                            json_str = re.sub(r'}\s*}\s*]', '}]', json_str)
+                            # 3. Fix trailing commas
+                            json_str = re.sub(r',\s*}', '}', json_str)
+                            json_str = re.sub(r',\s*]', ']', json_str)
+                            
                             story_data = json.loads(json_str)
-                            logger.info("Successfully extracted JSON from LLM response")
+                            logger.info("Successfully extracted and fixed JSON from LLM response")
                         else:
                             raise ValueError("No JSON found in response")
                     except Exception as extract_error:
@@ -415,6 +424,8 @@ class GenerateStoryTool(ToolInterface):
                 "scenes": scenes
             }
             
+            logger.info(f"Generated simple story with {story_data} scenes")
+
             return OutputSchema(result=json.dumps(story_data))
             
         except Exception as e:
